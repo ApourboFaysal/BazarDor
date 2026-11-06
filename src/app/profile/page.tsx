@@ -12,7 +12,6 @@ const ProfilePage = async () => {
 
   return (
     <main className="max-w-2xl mx-auto px-4 sm:px-6 py-10 sm:py-16 space-y-8">
-      {/* Back button */}
       <div>
         <Link
           href="/"
@@ -22,8 +21,6 @@ const ProfilePage = async () => {
           <span>হোম পেজে ফিরে যান</span>
         </Link>
       </div>
-
-      {/* Profile Header */}
       <div className="text-center space-y-2">
         <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
           আমার প্রোফাইল
@@ -32,14 +29,11 @@ const ProfilePage = async () => {
           আপনার অ্যাকাউন্টের তথ্য এখানে দেখুন ও পরিচালনা করুন।
         </p>
       </div>
-
-      {/* Profile Information Card */}
       <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm p-6 sm:p-8 space-y-6">
-        {/* Avatar & Name */}
         <div className="flex flex-col sm:flex-row items-center gap-5 pb-6 border-b border-slate-100 text-center sm:text-left">
-          <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 text-white font-black text-3xl flex items-center justify-center shadow-md overflow-hidden">
+          <div className="w-20 h-20 rounded-full bg-linear-to-tr from-blue-600 to-indigo-600 text-white font-black text-3xl flex items-center justify-center shadow-md overflow-hidden">
             {user.image ? (
-              // eslint-disable-next-line @next/next/no-img-element
+
               <img
                 src={user.image}
                 alt={user.name || "User"}
