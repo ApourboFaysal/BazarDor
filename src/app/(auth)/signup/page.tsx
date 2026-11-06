@@ -41,7 +41,7 @@ export default function SignUpPage() {
 
     const { data: resData, error } = await signUp.email({
       email: data.email as string, // user email address
-      password: data.password as string, // user password -> min 8 characters by default
+      password: data.password as string, // user password 
       name: data.name as string, // user display name
     });
 
@@ -58,19 +58,19 @@ export default function SignUpPage() {
     }
   };
 
-  // Google sign up / login
+
   const handleGoogleSignIn = async () => {
     await signIn.social({
       provider: "google",
-      callbackURL: "/", // go to the home page after login
+      callbackURL: "/", 
     });
   };
 
-  // GitHub sign up / login
+
   const handleGithubSignIn = async () => {
     await signIn.social({
       provider: "github",
-      callbackURL: "/", // go to the home page after login
+      callbackURL: "/", 
     });
   };
 
@@ -145,7 +145,6 @@ export default function SignUpPage() {
             </Button>
           </Form>
 
-          {/* "or" divider */}
           <div className="flex items-center gap-3">
             <Separator className="flex-1" />
             <span className="text-xs text-gray-600">অথবা</span>
@@ -174,7 +173,6 @@ export default function SignUpPage() {
             </Button>
           </div>
 
-          {/* Sign in link */}
           <p className="text-center text-sm text-gray-800">
             অ্যাকাউন্ট আছে?{" "}
             <Link href="/signin" className="text-green-600 font-medium">
@@ -184,7 +182,7 @@ export default function SignUpPage() {
         </Card.Content>
       </Card>
 
-      {/* Back to home */}
+
       <Link href="/" className="mt-6 text-sm text-gray-600">
         ← হোম পেজে ফিরে যান
       </Link>

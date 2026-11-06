@@ -93,7 +93,7 @@ const ProductDetailsPage = async ({ params }: { params: Promise<{ slug: string }
                 <p className="text-xs text-slate-500 mt-2">পণ্যটির সম্ভাব্য আজকের বাজার দর।</p>
               </div>
             </div>
-            <div className="flex flex-col md:items-end bg-slate-50 px-4 py-3 rounded-xl border border-slate-100 min-w-[150px]">
+            <div className="flex flex-col md:items-end bg-slate-50 px-4 py-3 rounded-xl border border-slate-100 min-w-150px">
               <span className="text-[11px] font-bold text-slate-400 uppercase">আজকের গড় দাম</span>
               <div className="flex items-center gap-2 mt-1">
                 <span className="text-3xl font-black text-slate-800">{product.today?.toLocaleString("bn-BD") || "০"}</span>
