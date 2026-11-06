@@ -4,9 +4,9 @@ import React, { useSyncExternalStore } from "react";
 import { Button } from "@heroui/react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image"; // Next.js Image কম্পোনেন্ট
+import Image from "next/image";
 
-// সার্ভারে খালি স্ট্রিং, ক্লায়েন্টে আসল তারিখ — তাই hydration mismatch হয় না
+
 const subscribeNoop = () => () => {};
 const getToday = () =>
   new Date().toLocaleDateString("bn-BD", {
@@ -19,35 +19,35 @@ const getServerToday = () => "";
 const useToday = () => useSyncExternalStore(subscribeNoop, getToday, getServerToday);
 
 export default function HeroSection() {
-  // রিয়েলটাইম ডেট (বাংলা ফরম্যাটে)
+
   const formattedDate = useToday();
 
   return (
     <section className="w-full bg-[#f8fafc] py-8 sm:py-12">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         
-        {/* মেইন হিরো কার্ড */}
+
         <div className="bg-white rounded-[2rem] border border-slate-200/80 shadow-sm p-6 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-8">
           
-          {/* বাম দিকের টেক্সট কন্টেন্ট */}
+
           <div className="flex-1 space-y-5 text-center md:text-left">
             
-            {/* ১. রিয়েলটাইম ডেট ব্যাজ */}
+
             <div className="inline-flex items-center justify-center px-3 py-1.5 rounded-full bg-[#e8f5e9] text-[#2e7d32] text-xs sm:text-sm font-semibold">
               {formattedDate || "\u00A0"}
             </div>
 
-            {/* ২. মেইন হেডিং */}
+
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
               আজকের বাজারের দাম এক নজরে
             </h1>
 
-            {/* ৩. সাবটাইটেল */}
+    
             <p className="text-sm sm:text-base text-slate-500 font-medium leading-relaxed max-w-xl mx-auto md:mx-0">
               চাল, ডাল, তেল, সবজি, মাছ, মাংস, ডিম ও মসলার দাম — বাজারভিত্তিক বিস্তারিত, গড়, সর্বনিম্ন-সর্বোচ্চ এবং দামের পরিবর্তন এক জায়গায়।
             </p>
 
-            {/* ৪. সিটিএ (CTA) বাটন */}
+
             <div className="pt-2">
               <Link href="/#all-products">
                 <Button
@@ -55,14 +55,11 @@ export default function HeroSection() {
                   className="h-11 px-6 rounded-xl bg-[#0e7a38] hover:bg-[#0a5c2a] text-white font-bold text-sm transition-colors shadow-md flex items-center gap-2 cursor-pointer"
                 >
                   <span>সব পণ্য দেখুন</span>
-                  {/* চাইলে অ্যারো আইকন দিতে পারেন, তবে ছবিতে নেই */}
                 </Button>
               </Link>
             </div>
           </div>
-
-          {/* ডান দিকের ইমেজ */}
-          <div className="flex-1 flex justify-center md:justify-end w-full max-w-[320px] md:max-w-[400px]">
+          <div className="flex-1 flex justify-center md:justify-end w-full max-w-[320px] md:max-w-400px">
             <Image
               src="/bazar-hero.png" 
               alt="আজকের বাজারের দাম"
@@ -70,7 +67,6 @@ export default function HeroSection() {
               height={300}
               className="w-full h-auto object-contain"
               priority
-              // যদি ইমেজ না পাওয়া যায়, তবে ফাঁকা দেখানোর জন্য (এরর এড়াতে)
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.style.display = 'none';

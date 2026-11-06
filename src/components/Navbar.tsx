@@ -6,8 +6,6 @@ import Link from "next/link";
 import { signOut, useSession } from "@/lib/auth-client";
 import { ICategory } from "@/types/type";
 import { usePathname } from "next/navigation";
-
-// সার্ভারে খালি স্ট্রিং, ক্লায়েন্টে আসল তারিখ — তাই hydration mismatch হয় না
 const subscribeNoop = () => () => {};
 const getToday = () =>
   new Date().toLocaleDateString("bn-BD", {
@@ -30,8 +28,6 @@ export default function Navbar() {
       try {
         const res = await fetch("https://api.api-store.workers.dev/api/bazardor/categories");
         const data = await res.json();
-        
-        // API রেসপন্স যদি array হয় সরাসরি, নাহলে data.categories
         const categoriesArray = Array.isArray(data) ? data : data.categories || [];
         console.log("Categories loaded:", categoriesArray);
         setCategories(categoriesArray);
@@ -110,7 +106,6 @@ export default function Navbar() {
 
         <nav aria-label="Category Navigation" className="flex items-center gap-5 sm:gap-8 py-2.5 overflow-x-auto no-scrollbar">
           {categories.map((cat, index) => {
-            // যদি cat.slug না থাকে, id দিয়ে fallback
             const catSlug = cat.slug || cat.id;
             const isActive = pathname === `/category/${catSlug}`;
             
