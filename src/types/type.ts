@@ -6,30 +6,30 @@ export interface ICategory {
   descriptionBn: string;
 }
 
-export interface IBazarPrice {
-  bazarName: string;
-  price: number;
+
+export interface IMarketPrice {
+  market: string;
+  division: string;
+  min: number;
+  max: number;
 }
 
 export interface IProduct {
   id: number;
   slug: string;
   nameBn: string;
-  category: string;
+  category: string; 
   categoryNameBn: string;
   categoryIcon: string;
-  unit: string;
-  unitNameBn: string;
-  image: string;
+  unit: string; 
+  image: string; 
   today: number;
   yesterday: number;
   lastWeek: number;
   lastMonth: number;
   change: {
     dir: "up" | "down" | "flat";
-    pct: number;
+    pct: number; 
   };
-  bazarPrices: IBazarPrice[];
-  lastUpdated: string;
-  descriptionBn: string;
+  markets: IMarketPrice[];
 }

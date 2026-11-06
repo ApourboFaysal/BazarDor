@@ -15,12 +15,15 @@ export default function Loading() {
         {/* Grid Skeleton */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pt-1">
           {[...Array(6)].map((_, idx) => (
-            <div key={idx} className="bg-white rounded-3xl border border-slate-200/80 p-5 space-y-4 shadow-sm">
+            <div
+              key={idx}
+              className="bg-white rounded-3xl border border-slate-200/80 p-5 space-y-4 shadow-sm"
+            >
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-2xl bg-slate-200/80 shrink-0" />
                   <div className="space-y-2">
-                    <div className="h-4 w-14 bg-blue-100/70 rounded-full" />
+                    <div className="h-4 w-14 bg-green-100/70 rounded-full" />
                     <div className="h-3.5 w-20 bg-slate-200/70 rounded-md" />
                   </div>
                 </div>

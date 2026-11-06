@@ -11,9 +11,14 @@ const FareIncreaseSection = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch("https://api.api-store.workers.dev/api/bazardor/products");
+        const res = await fetch(
+          "https://api.api-store.workers.dev/api/bazardor/products",
+        );
         const data: IProduct[] = await res.json();
-        const filtered = data.filter((item) => item.change.dir === "up").sort((a, b) => b.change.pct - a.change.pct).slice(0, 6);
+        const filtered = data
+          .filter((item) => item.change.dir === "up")
+          .sort((a, b) => b.change.pct - a.change.pct)
+          .slice(0, 6);
         setTopIncreased(filtered);
       } catch (error) {
         console.log(error);
@@ -28,7 +33,10 @@ const FareIncreaseSection = () => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-7">
           <div className="flex flex-col items-start gap-2">
-            <Chip size="sm" className="px-3 py-1 h-auto rounded-full bg-[#ffe4e6] text-[#e11d48] font-bold text-xs flex items-center gap-1.5">
+            <Chip
+              size="sm"
+              className="px-3 py-1 h-auto rounded-full bg-[#d1fae5] text-[#059669] font-bold text-xs flex items-center gap-1.5"
+            >
               <TrendingUp size={14} className="shrink-0" />
               <span>মূল্য বৃদ্ধি</span>
             </Chip>
@@ -44,7 +52,10 @@ const FareIncreaseSection = () => {
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {[...Array(6)].map((_, idx) => (
-              <div key={idx} className="h-52 rounded-3xl bg-slate-200/60 animate-pulse" />
+              <div
+                key={idx}
+                className="h-52 rounded-3xl bg-slate-200/60 animate-pulse"
+              />
             ))}
           </div>
         ) : (

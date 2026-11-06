@@ -1,6 +1,11 @@
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
-import { HiOutlineMail, HiOutlinePencilAlt, HiOutlineShieldCheck, HiOutlineArrowLeft } from "react-icons/hi";
+import {
+  HiOutlineMail,
+  HiOutlinePencilAlt,
+  HiOutlineShieldCheck,
+  HiOutlineArrowLeft,
+} from "react-icons/hi";
 import Link from "next/link";
 
 const ProfilePage = async () => {
@@ -15,7 +20,8 @@ const ProfilePage = async () => {
       <div>
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-slate-500 hover:text-slate-800 transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs sm:text-sm 
+          font-semibold text-slate-500 hover:text-slate-800 transition-colors"
         >
           <HiOutlineArrowLeft className="w-4 h-4" />
           <span>হোম পেজে ফিরে যান</span>
@@ -31,9 +37,11 @@ const ProfilePage = async () => {
       </div>
       <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm p-6 sm:p-8 space-y-6">
         <div className="flex flex-col sm:flex-row items-center gap-5 pb-6 border-b border-slate-100 text-center sm:text-left">
-          <div className="w-20 h-20 rounded-full bg-linear-to-tr from-blue-600 to-indigo-600 text-white font-black text-3xl flex items-center justify-center shadow-md overflow-hidden">
+          <div
+            className="w-20 h-20 rounded-full bg-linear-to-tr from-green-600 to-emerald-600 text-white 
+          font-black text-3xl flex items-center justify-center shadow-md overflow-hidden"
+          >
             {user.image ? (
-
               <img
                 src={user.image}
                 alt={user.name || "User"}
@@ -52,7 +60,10 @@ const ProfilePage = async () => {
               <HiOutlineMail className="w-4 h-4" />
               <span>{user.email}</span>
             </p>
-            <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full mt-1">
+            <span
+              className="inline-flex items-center gap-1 text-[11px] 
+            font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full mt-1"
+            >
               <HiOutlineShieldCheck className="w-3.5 h-3.5" />
               <span>ভেরিফাইড অ্যাকাউন্ট</span>
             </span>
@@ -90,7 +101,8 @@ const ProfilePage = async () => {
         <div className="pt-2">
           <Link
             href="/profile/update-profile"
-            className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-md hover:shadow-lg transition-all text-sm flex items-center justify-center gap-2"
+            className="w-full py-3 bg-[#0e7a38] hover:bg-[#0a5c2a] text-white font-bold 
+            rounded-xl shadow-md hover:shadow-lg transition-all text-sm flex items-center justify-center gap-2"
           >
             <HiOutlinePencilAlt className="w-5 h-5" />
             <span>তথ্য আপডেট করুন</span>

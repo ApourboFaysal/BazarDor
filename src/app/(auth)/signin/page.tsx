@@ -24,9 +24,9 @@ export default function SignInPage() {
     const data = Object.fromEntries(formData);
 
     const { data: resData, error } = await signIn.email({
-      email: data.email as string, 
+      email: data.email as string,
       password: data.password as string,
-      callbackURL: "/", 
+      callbackURL: "/",
     });
 
     if (error) {
@@ -43,7 +43,7 @@ export default function SignInPage() {
   const handleGoogleSignIn = async () => {
     await signIn.social({
       provider: "google",
-      callbackURL: "/", 
+      callbackURL: "/",
     });
   };
 
@@ -51,7 +51,7 @@ export default function SignInPage() {
   const handleGithubSignIn = async () => {
     await signIn.social({
       provider: "github",
-      callbackURL: "/", 
+      callbackURL: "/",
     });
   };
 

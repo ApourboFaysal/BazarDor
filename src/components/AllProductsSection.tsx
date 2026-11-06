@@ -13,7 +13,9 @@ export default function AllProductsSection() {
   useEffect(() => {
     const fetchAllProducts = async () => {
       try {
-        const res = await fetch("https://api.api-store.workers.dev/api/bazardor/products");
+        const res = await fetch(
+          "https://api.api-store.workers.dev/api/bazardor/products",
+        );
         if (!res.ok) throw new Error("Failed to fetch products");
         const data: IProduct[] = await res.json();
         setProducts(data);
@@ -27,11 +29,15 @@ export default function AllProductsSection() {
   }, []);
 
   return (
-    <section id="all-products" className="w-full py-12 bg-[#f8fafc]">
+    <section id="সব-পণ্য" className="w-full py-12 bg-[#f8fafc] scroll-mt-28">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-7">
           <div className="flex flex-col items-start gap-2">
-            <Chip size="sm" className="px-3 py-1 h-auto rounded-full bg-blue-100 text-blue-700 font-bold text-xs flex items-center gap-1.5">
+            <Chip
+              size="sm"
+              className="px-3 py-1 h-auto rounded-full bg-green-100 text-green-800 
+              font-bold text-xs flex items-center gap-1.5"
+            >
               <LayoutGrid size={14} className="shrink-0" />
               <span>সকল তালিকা</span>
             </Chip>
@@ -39,7 +45,8 @@ export default function AllProductsSection() {
               <span>সব পণ্য</span>
             </h2>
             <p className="text-xs sm:text-sm text-slate-500 font-medium">
-              বাজার দরের সম্পূর্ণ তালিকা — এক জায়গায় সব পণ্যের আজকের দাম তুলনা করুন
+              বাজার দরের সম্পূর্ণ তালিকা — এক জায়গায় সব পণ্যের আজকের দাম তুলনা
+              করুন
             </p>
           </div>
           <span className="text-xs text-slate-400 font-medium">
@@ -50,7 +57,10 @@ export default function AllProductsSection() {
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {[...Array(9)].map((_, idx) => (
-              <div key={idx} className="h-52 rounded-3xl bg-slate-200/60 animate-pulse" />
+              <div
+                key={idx}
+                className="h-52 rounded-3xl bg-slate-200/60 animate-pulse"
+              />
             ))}
           </div>
         ) : (

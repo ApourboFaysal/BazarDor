@@ -2,6 +2,7 @@
 import { IProduct } from "@/types/type";
 import { ArrowUpDown } from "lucide-react";
 import React, { useState } from "react";
+import Link from "next/link";
 import ProductCard from "./ProductCard";
 
 const CategoryProducts = ({ products }: { products: IProduct[] }) => {
@@ -16,19 +17,27 @@ const CategoryProducts = ({ products }: { products: IProduct[] }) => {
 
   return (
     <div>
-      <div className="bg-white rounded-2xl border border-slate-200/80 px-4 sm:px-5 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-sm">
+      <div
+        className="bg-white rounded-2xl border border-slate-200/80 px-4 sm:px-5 py-3 
+      flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-sm"
+      >
         <p className="text-xs sm:text-sm text-slate-500 font-medium">
-          মোট <span className="font-bold text-slate-900">{products.length.toLocaleString("bn-BD")}টি</span> পণ্যের আজকের দাম
+          মোট{" "}
+          <span className="font-bold text-slate-900">
+            {products.length.toLocaleString("bn-BD")}টি
+          </span>{" "}
+          পণ্যের আজকের দাম
         </p>
         <div className="flex items-center gap-2 self-end sm:self-auto">
           <div className="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-slate-600">
-            <ArrowUpDown size={14} className="text-blue-600" />
+            <ArrowUpDown size={14} className="text-[#0e7a38]" />
             <span>সাজান:</span>
           </div>
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="text-xs sm:text-sm font-medium text-slate-800 bg-white border border-slate-200 rounded-xl px-3 py-1.5 focus:outline-none focus:border-blue-500 cursor-pointer"
+            className="text-xs sm:text-sm font-medium text-slate-800 bg-white border border-slate-200
+             rounded-xl px-3 py-1.5 focus:outline-none focus:border-green-600 cursor-pointer"
           >
             <option value="default">ডিফল্ট</option>
             <option value="price-asc">দাম: কম থেকে বেশি</option>
@@ -39,7 +48,15 @@ const CategoryProducts = ({ products }: { products: IProduct[] }) => {
 
       {sortedProducts.length === 0 ? (
         <div className="bg-white rounded-3xl border border-slate-200/80 p-12 text-center mt-5">
-          <p className="text-slate-500 font-medium">এই ক্যাটাগরিতে কোনো পণ্য পাওয়া যায়নি।</p>
+          <p className="text-slate-500 font-medium">
+            এই ক্যাটাগরিতে কোনো পণ্য পাওয়া যায়নি।
+          </p>
+          <Link
+            href="/"
+            className="inline-block mt-5 px-6 py-3 bg-[#0e7a38] text-white font-bold rounded-xl text-sm"
+          >
+            হোম পেজে ফিরে যান
+          </Link>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pt-5">
