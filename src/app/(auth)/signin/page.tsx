@@ -24,9 +24,9 @@ export default function SignInPage() {
     const data = Object.fromEntries(formData);
 
     const { data: resData, error } = await signIn.email({
-      email: data.email as string, // required, The email address of the user.
-      password: data.password as string, // required, The password of the user.
-      callbackURL: "/", // go to the home page after login
+      email: data.email as string, 
+      password: data.password as string,
+      callbackURL: "/", 
     });
 
     if (error) {
@@ -43,7 +43,7 @@ export default function SignInPage() {
   const handleGoogleSignIn = async () => {
     await signIn.social({
       provider: "google",
-      callbackURL: "/", // go to the home page after login
+      callbackURL: "/", 
     });
   };
 
@@ -51,7 +51,7 @@ export default function SignInPage() {
   const handleGithubSignIn = async () => {
     await signIn.social({
       provider: "github",
-      callbackURL: "/", // go to the home page after login
+      callbackURL: "/", 
     });
   };
 
@@ -101,14 +101,12 @@ export default function SignInPage() {
             </Button>
           </Form>
 
-          {/* "or" divider */}
           <div className="flex items-center gap-3">
             <Separator className="flex-1" />
             <span className="text-xs text-gray-600">অথবা</span>
             <Separator className="flex-1" />
           </div>
 
-          {/* Social buttons (design only) */}
           <div className="flex gap-3">
             <Button
               type="button"
