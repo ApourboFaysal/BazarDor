@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
 import { Chip } from "@heroui/react";
@@ -8,7 +7,6 @@ import { IProduct } from "@/types/type";
 
 export default function Marque() {
   const [products, setProducts] = useState<IProduct[]>([]);
-
   useEffect(() => {
     const fetchTickerData = async () => {
       try {
@@ -21,9 +19,7 @@ export default function Marque() {
     };
     fetchTickerData();
   }, []);
-
   if (products.length === 0) return null;
-
   return (
     <div className="w-full bg-[#0b1324] text-white flex items-center h-11 overflow-hidden border-b border-slate-800">
       <Marquee pauseOnHover={true} speed={45} gradient={false}>
