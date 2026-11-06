@@ -11,10 +11,8 @@ const ProductDetailsPage = async ({ params }: { params: Promise<{ slug: string }
     let res = await fetch(`https://api.api-store.workers.dev/api/bazardor/products/${slug}`, { cache: "no-store" });
     let data = await res.json();
 
-    // কিছু API { product: {...} } আকারে রেসপন্স দেয়, সেটা হ্যান্ডেল করা
     if (data && !data.id && data.product) data = data.product;
 
-    // যদি সরাসরি slug দিয়ে না পাওয়া যায়, তবে সব প্রোডাক্ট থেকে খোঁজা
     if (!data || !data.id) {
       const allRes = await fetch("https://api.api-store.workers.dev/api/bazardor/products", { cache: "no-store" });
       const allProducts = await allRes.json();
@@ -39,10 +37,8 @@ const ProductDetailsPage = async ({ params }: { params: Promise<{ slug: string }
     );
   }
 
-  // 🔴 আপনার API-র ডাটা স্ট্রাকচার অনুযায়ী 'markets' অ্যারে নেওয়া হচ্ছে 🔴
   const apiMarkets = product.markets || [];
 
-  // গ্লোবাল মিন, ম্যাক্স এবং গড় দাম বের করার লজিক
   let globalMin = Infinity;
   let globalMax = -Infinity;
   let totalMin = 0;
@@ -59,7 +55,6 @@ const ProductDetailsPage = async ({ params }: { params: Promise<{ slug: string }
     totalMax += maxVal;
   });
 
-  // যদি কোনো বাজার না থাকে, তবে ফলব্যাক হিসেবে product.today ব্যবহার হবে
   if (apiMarkets.length === 0) {
     globalMin = product.today;
     globalMax = product.today;
@@ -67,7 +62,6 @@ const ProductDetailsPage = async ({ params }: { params: Promise<{ slug: string }
     totalMax = product.today;
   }
 
-  // এভারেজ (গড়) = (সব বাজারের মিন + সব বাজারের ম্যাক্স) / (বাজারের সংখ্যা * ২)
   const globalAvg = apiMarkets.length > 0 
     ? Math.round((totalMin + totalMax) / (apiMarkets.length * 2)) 
     : product.today;
@@ -76,7 +70,6 @@ const ProductDetailsPage = async ({ params }: { params: Promise<{ slug: string }
     <main className="min-h-screen w-full py-6 sm:py-10 bg-[#f8fafc]">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-6">
         
-        {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-500">
           <Link href="/" className="flex items-center gap-1 hover:text-blue-600"><Home size={14} /> হোম</Link>
           <ChevronRight size={14} />
@@ -88,7 +81,6 @@ const ProductDetailsPage = async ({ params }: { params: Promise<{ slug: string }
           <span className="font-bold text-slate-900">{product.nameBn}</span>
         </div>
 
-        {/* ১. মেইন হেডার কার্ড */}
         <Card className="bg-white rounded-3xl border border-slate-200/80 p-5 sm:p-6 shadow-sm">
           <Card.Content className="p-0 flex flex-col md:flex-row md:items-start justify-between gap-6">
             <div className="flex items-start gap-4">
@@ -114,7 +106,7 @@ const ProductDetailsPage = async ({ params }: { params: Promise<{ slug: string }
           </Card.Content>
         </Card>
 
-        {/* ২. দামের সারসংক্ষেপ */}
+
         <div className="space-y-3">
           <h2 className="text-sm font-bold text-slate-800 ml-1">দামের সারসংক্ষেপ</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -140,8 +132,6 @@ const ProductDetailsPage = async ({ params }: { params: Promise<{ slug: string }
             </Card>
           </div>
         </div>
-
-        {/* ৩. বাজারভিত্তিক আজকের দাম (API ডাটা ম্যাপিং) */}
         <Card className="bg-white rounded-3xl border border-slate-200/80 p-0 shadow-sm overflow-hidden">
           <div className="p-5 border-b border-slate-100">
             <h2 className="text-sm font-bold text-slate-800">বাজারভিত্তিক আজকের দাম</h2>
@@ -149,7 +139,7 @@ const ProductDetailsPage = async ({ params }: { params: Promise<{ slug: string }
           
           {apiMarkets.length > 0 ? (
             <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse min-w-[600px]">
+              <table className="w-full text-left border-collapse min-w-600px">
                 <thead>
                   <tr className="bg-slate-50/50 text-[11px] font-bold text-slate-500">
                     <th className="py-3 px-5 border-b border-slate-100">বাজার</th>
@@ -160,11 +150,10 @@ const ProductDetailsPage = async ({ params }: { params: Promise<{ slug: string }
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 text-xs sm:text-sm text-slate-700">
-                  {/* এখানে আপনার API-র প্রতিটি বাজারের ডাটা লুপ হবে */}
                   {apiMarkets.map((m: any, idx: number) => {
                     const mMin = m.min || 0;
                     const mMax = m.max || 0;
-                    const mAvg = Math.round((mMin + mMax) / 2); // প্রতি বাজারের গড়
+                    const mAvg = Math.round((mMin + mMax) / 2); 
 
                     return (
                       <tr key={idx} className="hover:bg-slate-50/80 transition-colors">
@@ -186,7 +175,6 @@ const ProductDetailsPage = async ({ params }: { params: Promise<{ slug: string }
           )}
         </Card>
 
-        {/* নোটিশ */}
         <div className="text-center pt-4">
           <p className="text-xs text-slate-400">
             বাজার দর — প্রয়োজনীয় পণ্যের দাম এক নজরে।
