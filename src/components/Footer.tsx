@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-
 export default function Footer() {
   return (
     <footer className="w-full bg-white border-t border-slate-200/80 mt-auto">
