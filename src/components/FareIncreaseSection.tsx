@@ -8,7 +8,6 @@ import ProductCard from "./ProductCard";
 const FareIncreaseSection = () => {
   const [topIncreased, setTopIncreased] = useState<IProduct[]>([]);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -24,7 +23,6 @@ const FareIncreaseSection = () => {
     };
     fetchProducts();
   }, []);
-
   return (
     <section className="w-full py-12 bg-[#f8fafc]">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
