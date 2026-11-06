@@ -1,0 +1,23 @@
+@import "tailwindcss";
+@import "@heroui/styles";
+
+/* রঙ এক জায়গায় — বদলাতে চাইলে শুধু এখানে বদলান */
+@theme {
+  --color-brand: #0a8a43; /* মূল সবুজ */
+  --color-brand-dark: #07713a;
+  --color-canvas: #eef2ec; /* পেজের ব্যাকগ্রাউন্ড */
+  --color-panel: #f8fbf7; /* কার্ডের ব্যাকগ্রাউন্ড */
+  --color-rise: #d92d3a; /* দাম বাড়লে লাল */
+  --color-fall: #0a8a43; /* দাম কমলে সবুজ */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
